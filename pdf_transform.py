@@ -56,8 +56,6 @@ def main():
 
     input_pdf_real_paths: list[str] = [realpath(file_name) for file_name in input_pdf_file_names]
 
-    makedirs(output_dir_path)
-
     for pdf_number, pdf_path in enumerate(input_pdf_real_paths, start=1):
         pdf_base_name, extension = basename(splitext(pdf_path)[0]), splitext(pdf_path)[1]
 
@@ -75,10 +73,12 @@ def main():
 
         output_pdf = process_pdf(current_input_pdf, args.verbose)
 
-        output_pdf_file_name: str = pdf_base_name +"_processed"+extension
+        output_pdf_file_name: str = pdf_base_name +"_processed"+ extension
         output_pdf_file_path: str = output_dir_path + "/" + output_pdf_file_name
 
         mark_as_already_done(output_pdf)
+
+        makedirs(output_dir_path)
 
         with open(output_pdf_file_path, "wb") as output_file:
            output_pdf.write(output_file)
