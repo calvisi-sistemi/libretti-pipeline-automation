@@ -9,8 +9,8 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-# Any XML file
-*.xml
+# Any file or directory containing *processed* in its name
+*processed*
 
 # Any PDF File
 *.pdf
